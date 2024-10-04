@@ -1,0 +1,4 @@
+#ignore
+tmp
+.env
+!.env.example
