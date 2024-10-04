@@ -18,8 +18,9 @@ import (
 )
 
 func main() {
-	configs.InitConfig()                       // Initialize configuration
-	if err := util_common.Init(); err != nil { // Initialize i18n bundle
+
+	configs.InitConfig()
+	if err := util_common.Init(); err != nil {
 		log.Fatalf("Failed to initialize i18n: %v", err)
 	}
 	db := database.GetDB()
@@ -45,6 +46,7 @@ func main() {
 			DefaultLanguage: language.English,
 		}),
 	)
+
 	// CORS setup
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "*",
