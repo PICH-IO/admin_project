@@ -53,6 +53,7 @@ func main() {
 		AllowHeaders: "Origin, Content-Type, Accept, Authorization",
 		AllowMethods: "GET, POST, PUT, DELETE, PATCH",
 	}))
+
 	// fmt.Println("helllo")
 
 	routes.SetupRoutes(app, db)
