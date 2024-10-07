@@ -1,7 +1,6 @@
 package configs
 
 import (
-	"cmp"
 	"fmt"
 	"log"
 	"os"
@@ -24,11 +23,11 @@ func InitConfig() {
 		log.Fatal("Error loading .env file")
 	}
 
-	DATABASE_URL = cmp.Or(os.Getenv("DATABASE_URL"), "DATABASE_URL")
-	PORT = cmp.Or(os.Getenv("PORT"), "PORT")
-	JWT_SECRET = cmp.Or(os.Getenv("JWT_SECRET"), "THEISIS_SECRET")
-	TIME_ZONE = cmp.Or(os.Getenv("TIME_ZONE"), "Asia/Phnom_Penh")
-	USER_CONTEXT = cmp.Or(os.Getenv("USER_CONTEXT"), "userContext")
+	DATABASE_URL = os.Getenv("DATABASE_URL")
+	PORT = os.Getenv("PORT")
+	JWT_SECRET = os.Getenv("JWT_SECRET")
+	USER_CONTEXT = os.Getenv("USER_CONTEXT")
+	TIME_ZONE = os.Getenv("TIME_ZONE")
 
 	if PORT == "" && JWT_SECRET == "" {
 		_ = fmt.Errorf("environment variable is not set")

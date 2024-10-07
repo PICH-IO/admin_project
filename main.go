@@ -20,15 +20,16 @@ import (
 func main() {
 
 	configs.InitConfig()
+
 	if err := util_common.Init(); err != nil {
 		log.Fatalf("Failed to initialize i18n: %v", err)
 	}
+
 	db := database.GetDB()
 
 	app := fiber.New()
 	app.Use(logger.New())
 	app.Use(recover.New())
-
 	app.Use(cors.New())
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "*",

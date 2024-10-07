@@ -16,6 +16,7 @@ var (
 func initializeDB() {
 
 	DATABASE_URL := os.Getenv("DATABASE_URL")
+
 	var errDB error
 	db, errDB = sqlx.Connect("postgres", DATABASE_URL)
 	if errDB != nil {
@@ -27,6 +28,7 @@ func initializeDB() {
 		defer db.Close()
 		log.Fatalf("Failed to ping the database: %v", err)
 	}
+
 	// Set connection pool settings
 	db.SetMaxIdleConns(10)
 	db.SetMaxOpenConns(10)

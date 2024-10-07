@@ -2,11 +2,10 @@ package pkg_models
 
 // token response
 type Token struct {
-	Id       float64 `json:"id"`
-	Username string  `json:"user_name"`
-	// MembershipId   float64 `json:"membership_id"`
-	// MembershipRole string  `json:"membership_role"`
-	// RoleId         float64 `json:"role_id"`
+	Id          float64  `json:"id"`
+	Username    string   `json:"username"`
+	Permissions []string `json:"permissions"`
+	RoleId      float64  `json:"role_id"`
 }
 
 // paging option request

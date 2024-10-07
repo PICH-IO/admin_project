@@ -41,7 +41,7 @@ go get github.com/joho/godotenv
 
 # Create a new migration file
 go install github.com/pressly/goose/v3/cmd/goose@latest
-goose create add_some_column sql
+goose create add_some_column_or_table sql
 
 # Example output:
 # Created new file: 20170506082420_add_some_column.sql

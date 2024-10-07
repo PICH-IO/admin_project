@@ -1,18 +1,19 @@
 package util_error
 
-// custom new errors
+import "fmt"
+
 type ErrorResponse struct {
 	MessageID    string `json:"message_id"`
 	ErrorMessage string `json:"error_message"`
 }
 
-func NewError(message_id, error_message string) *ErrorResponse {
+func NewError(messageID, errorMessage string) *ErrorResponse {
 	return &ErrorResponse{
-		MessageID:    message_id,
-		ErrorMessage: error_message,
+		MessageID:    messageID,
+		ErrorMessage: errorMessage,
 	}
 }
 
 func (e *ErrorResponse) Error() string {
-	return e.ErrorMessage
+	return fmt.Sprintf("Error %s: %s", e.MessageID, e.ErrorMessage)
 }

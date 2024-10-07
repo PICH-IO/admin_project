@@ -14,13 +14,16 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 )
 
-func UseMiddleware(secret string) fiber.Handler {
+func JWTAuthMiddleware(secret string) fiber.Handler {
+
 	return func(c *fiber.Ctx) error {
+
 		if secret == "" {
 			return c.Status(fiber.StatusUnauthorized).JSON(util_error.ErrorResponse{
 				ErrorMessage: "Warning: Empty secret provided for JWT authentication",
 			})
 		}
+
 		config := jwtware.Config{
 			SigningKey: []byte(secret),
 			ContextKey: configs.USER_CONTEXT,
@@ -87,7 +90,6 @@ func UseMiddleware(secret string) fiber.Handler {
 		// Create the JWT middleware with the configured options
 		jwtMiddleware := jwtware.New(config)
 
-		// Return the JWT middleware handler to Fiber
 		return jwtMiddleware(c)
 	}
 }
